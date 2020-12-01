@@ -1,5 +1,4 @@
-pub fn part1() -> String {
-    const INPUT: &str = include_str!("./../../inputs/input{{day}}.txt");
+pub fn part1(input: &str) -> String {
     let mut answer = String::new();
 
 
@@ -7,8 +6,7 @@ pub fn part1() -> String {
     return answer;
 }
 
-/*pub fn part2() -> String {
-    let input = include_str!("./../../inputs/input{{day}}.txt");
+/*pub fn part2(input: &str) -> String {
     let mut answer = String::new();
 
 
@@ -20,13 +18,15 @@ pub fn part1() -> String {
 mod tests {
     use super::*;
 
+    const INPUT: &str = "";
+
     #[test]
     fn test_part1() {
-        assert_eq!(part1(), "");
+        assert_eq!(part1(INPUT), "");
     }
 
 /*    #[test]
     fn test_part2() {
-        assert_eq!(part2(), None);
+        assert_eq!(part2(INPUT), "");
     }*/
 }
