@@ -10,12 +10,19 @@ As always the focus is to solve the issue at hand and not go back and refactor t
 Libraries and utilities might get refactored but shouldn't break old code.
 
 ### Running
-I might change this invocation at some point..
 ```bash
-cargo run --package advent-of-code-2020 --bin advent-of-code-2020
+cargo run
 ```
 
 #### Tests
 ```bash
 cargo test
+```
+
+##### Bootstrapper
+I simple tool I quickly made to "get ready" for this year's advent of code. It simply downloads the question and input into two directories.
+It also creates a solution file for me to start coding in.
+The bootstrapper will not work without a configuration file (bootstrapper/config.toml) and refuses to work outside of an active advent of code.
+```bash
+cargo run -p bootstrapper
 ```

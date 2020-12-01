@@ -6,7 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/chrono/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/bootstrapper/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/solutions/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/bootstrapper/target" />
       <excludeFolder url="file://$MODULE_DIR$/chrono/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />

@@ -16,7 +16,6 @@ pub fn main() {
     println!("Bootstrapping current day puzzle ...");
 
     let now = chrono::offset::Local::now();
-    //let now = Utc.ymd(2019, 12, 1).and_hms(12, 0, 9);
 
     if now.month() == 12 && now.day() < 26 {
         create_source_file(&now.day());
@@ -28,15 +27,14 @@ pub fn main() {
 }
 
 fn create_source_file(day: &u32) {
-    println!("Creating rust file for day {}", day);
-
     let file_to_create = current_dir()
         .unwrap()
-        .join("solutions")
         .join("src")
         .join(format!("day{:02}.rs", &day));
 
     if !file_to_create.exists() {
+        println!("Creating rust file for day {}", day);
+
         let path_to_source = current_dir()
             .unwrap()
             .join("bootstrapper")
