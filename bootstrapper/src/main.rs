@@ -42,10 +42,12 @@ fn create_source_file(day: &u32) {
 
         let mut template_source = File::open(&path_to_source).unwrap();
         let mut output_file = File::create(file_to_create).unwrap();
-        let data = json!({"day": day});
+        let data = json!({ "day": day });
 
         let handlebars = Handlebars::new();
-        handlebars.render_template_source_to_write(&mut template_source, &data, &mut output_file).unwrap();
+        handlebars
+            .render_template_source_to_write(&mut template_source, &data, &mut output_file)
+            .unwrap();
     }
 }
 
@@ -57,7 +59,9 @@ fn download_input(year: &i32, day: &u32) -> Result<(), Box<dyn error::Error>> {
     if !path_to_input.exists() {
         let url = format!("https://adventofcode.com/{}/day/{}/input", &year, &day);
         let input = download(&url).unwrap();
-        File::create(path_to_input).unwrap().write_all(input.as_bytes())?;
+        File::create(path_to_input)
+            .unwrap()
+            .write_all(input.as_bytes())?;
     }
 
     Ok(())
@@ -71,7 +75,9 @@ fn download_description(year: &i32, day: &u32) -> Result<(), Box<dyn error::Erro
     if !path_to_question.exists() {
         let url = format!("https://adventofcode.com/{}/day/{}", &year, &day);
         let input = download(&url).unwrap();
-        File::create(path_to_question).unwrap().write_all(input.as_bytes())?;
+        File::create(path_to_question)
+            .unwrap()
+            .write_all(input.as_bytes())?;
     }
 
     Ok(())
@@ -93,7 +99,10 @@ fn get_session() -> String {
         .join("bootstrapper")
         .join("config.toml");
     let mut buffer = String::new();
-    File::open(&path_to_config).unwrap().read_to_string(&mut buffer).expect("Read to string");
+    File::open(&path_to_config)
+        .unwrap()
+        .read_to_string(&mut buffer)
+        .expect("Read to string");
     let config = buffer.parse::<Value>().expect("Parsing toml from buffer");
     let session = config["session"].as_str().unwrap();
     return format!("session={}", session);

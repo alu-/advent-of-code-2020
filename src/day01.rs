@@ -20,9 +20,14 @@ pub fn part2(input: &str) -> String {
     'outer_loop: for x in input.lines() {
         for y in input.lines() {
             for z in input.lines() {
-                let sum = x.parse::<i32>().unwrap() + y.parse::<i32>().unwrap() + z.parse::<i32>().unwrap();
+                let sum = x.parse::<i32>().unwrap()
+                    + y.parse::<i32>().unwrap()
+                    + z.parse::<i32>().unwrap();
                 if sum == 2020 {
-                    answer = (x.parse::<i32>().unwrap() * y.parse::<i32>().unwrap() * z.parse::<i32>().unwrap()).to_string();
+                    answer = (x.parse::<i32>().unwrap()
+                        * y.parse::<i32>().unwrap()
+                        * z.parse::<i32>().unwrap())
+                    .to_string();
                     break 'outer_loop;
                 }
             }
