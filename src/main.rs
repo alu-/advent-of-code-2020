@@ -1,6 +1,7 @@
 mod day01;
 mod day02;
 mod day03;
+mod day04;
 
 fn main() {
     const INPUT_1: &str = include_str!("../inputs/input1.txt");
@@ -14,4 +15,8 @@ fn main() {
     const INPUT_3: &str = include_str!("../inputs/input3.txt");
     println!("Day 3 - part 1: {}", day03::part1(INPUT_3).unwrap());
     println!("Day 3 - part 2: {}", day03::part2(INPUT_3).unwrap());
+
+    const INPUT_4: &str = include_str!("../inputs/input4.txt");
+    println!("Day 4 - part 1: {}", day04::part1(INPUT_4).unwrap());
+    println!("Day 4 - part 2: {}", day04::part2(INPUT_4).unwrap());
 }

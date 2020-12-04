@@ -6,6 +6,8 @@ edition = "2018"
 
 [dependencies]
 regex = "1.4.2"
+itertools = "0.9.0"
+raster = "0.2.0"
 
 [workspace]
 members = [
