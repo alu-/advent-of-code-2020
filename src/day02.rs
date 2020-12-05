@@ -1,3 +1,4 @@
+use lazy_static::lazy_static;
 use regex::Regex;
 use std::str::FromStr;
 use std::string::ParseError;
@@ -14,8 +15,10 @@ impl FromStr for Password {
     type Err = ParseError;
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
-        let pattern = Regex::new(r"^(\d+)-(\d+) (\w): (\w*)$").unwrap();
-        let captures = pattern.captures(s).unwrap();
+        lazy_static! {
+            static ref PATTERN : Regex = Regex::new(r"^(\d+)-(\d+) (\w): (\w*)$").unwrap();
+        }
+        let captures = PATTERN.captures(s).unwrap();
 
         Ok(Password {
             min: captures.get(1).unwrap().as_str().parse().unwrap(),
