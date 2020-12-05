@@ -16,7 +16,7 @@ impl FromStr for Password {
 
     fn from_str(s: &str) -> Result<Self, Self::Err> {
         lazy_static! {
-            static ref PATTERN : Regex = Regex::new(r"^(\d+)-(\d+) (\w): (\w*)$").unwrap();
+            static ref PATTERN: Regex = Regex::new(r"^(\d+)-(\d+) (\w): (\w*)$").unwrap();
         }
         let captures = PATTERN.captures(s).unwrap();
 
