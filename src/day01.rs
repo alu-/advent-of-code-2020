@@ -1,40 +1,32 @@
-pub fn part1(input: &str) -> String {
-    let mut answer = String::new();
+pub fn part1(input: &str) -> Result<usize, String> {
+    let lines: Vec<usize> = input.lines().map(|x| x.parse::<usize>().unwrap()).collect();
 
-    'outer_loop: for x in input.lines() {
-        for y in input.lines() {
-            let sum = x.parse::<i32>().unwrap() + y.parse::<i32>().unwrap();
-            if sum == 2020 {
-                answer = (x.parse::<i32>().unwrap() * y.parse::<i32>().unwrap()).to_string();
-                break 'outer_loop;
-            }
-        }
-    }
+    let answer: Vec<&usize> = lines
+        .iter()
+        .filter(|x| {
+            let m = 2020 - *x;
+            lines.contains(&m)
+        })
+        .collect();
 
-    return answer;
+    Ok(answer[0] * answer[1])
 }
 
-pub fn part2(input: &str) -> String {
-    let mut answer = String::new();
+pub fn part2(input: &str) -> Result<i32, String> {
+    let lines: Vec<i32> = input.lines().map(|x| x.parse::<i32>().unwrap()).collect();
 
-    'outer_loop: for x in input.lines() {
-        for y in input.lines() {
-            for z in input.lines() {
-                let sum = x.parse::<i32>().unwrap()
-                    + y.parse::<i32>().unwrap()
-                    + z.parse::<i32>().unwrap();
-                if sum == 2020 {
-                    answer = (x.parse::<i32>().unwrap()
-                        * y.parse::<i32>().unwrap()
-                        * z.parse::<i32>().unwrap())
-                    .to_string();
-                    break 'outer_loop;
-                }
+    let mut answer: i32 = 0;
+    'outer: for x in &lines {
+        for y in &lines {
+            let sum = 2020 - x - y;
+            if lines.contains(&sum) {
+                answer = sum * x * y;
+                break 'outer;
             }
         }
     }
 
-    return answer;
+    Ok(answer)
 }
 
 #[cfg(test)]
@@ -45,11 +37,11 @@ mod tests {
 
     #[test]
     fn test_part1() {
-        assert_eq!(part1(INPUT), "514579");
+        assert_eq!(part1(INPUT).unwrap(), 514579);
     }
 
     #[test]
     fn test_part2() {
-        assert_eq!(part2(INPUT), "241861950");
+        assert_eq!(part2(INPUT).unwrap(), 241861950);
     }
 }
