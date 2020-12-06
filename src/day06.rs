@@ -11,10 +11,9 @@ pub fn part2(input: &str) -> Result<usize, String> {
     Ok(input.split("\n\n").fold(0, |acc, x| {
         let answers = x.replace("\n", "");
         let people = x.matches("\n").count() + 1;
-        let chars = answers.chars();
 
         let mut count = 0;
-        for char in chars.unique() {
+        for char in answers.chars().unique() {
             if x.matches(char).count() == people {
                 count += 1;
             }
